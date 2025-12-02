@@ -1,0 +1,1 @@
+Fixes: Disable OSS sound support by default on Linux (OSS is mainly for FreeBSD)
