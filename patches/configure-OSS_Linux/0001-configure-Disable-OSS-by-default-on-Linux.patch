@@ -1,0 +1,31 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wine Staging <staging@winehq.org>
+Date: Mon, 2 Dec 2024 15:00:00 +0000
+Subject: [PATCH] configure: Disable OSS by default on Linux.
+
+OSS (Open Sound System) is primarily used on FreeBSD and other BSD systems.
+On Linux, ALSA and PulseAudio are the preferred audio systems. This patch
+disables OSS by default on Linux to avoid spurious "OSS sound system found
+but too old" warnings during configure, while still allowing users to
+explicitly enable it with --with-oss if desired.
+---
+ configure.ac | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/configure.ac b/configure.ac
+index b4ede761391..1234567890a 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -99,6 +99,9 @@ case $host in
+   *-darwin*)
+     with_fontconfig=${with_fontconfig:-no}
+     ;;
++  *-linux*)
++    with_oss=${with_oss:-no}
++    ;;
+   *-mingw32*|*-cygwin*)
+     enable_win16=${enable_win16:-no}
+     with_mingw=${with_mingw:-no}
+-- 
+2.42.0
+

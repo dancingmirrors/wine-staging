@@ -1,0 +1,40 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wine Staging <wine-staging@winehq.org>
+Date: Mon, 2 Dec 2024 00:00:00 +0000
+Subject: [PATCH] loader/wine.inf.in: Update default version info for Windows
+ 11.
+
+---
+ loader/wine.inf.in | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+diff --git a/loader/wine.inf.in b/loader/wine.inf.in
+index 11111111111..22222222222 100644
+--- a/loader/wine.inf.in
++++ b/loader/wine.inf.in
+@@ -1111,9 +1111,9 @@ HKLM,"System\CurrentControlSet\Services\Winsock2\Parameters\Protocol_Catalog9\Ca
+ [VersionInfo]
+ HKLM,%CurrentVersionNT%,"CurrentVersion",2,"6.3"
+ HKLM,%CurrentVersionNT%,"CurrentMajorVersionNumber",0x10003,10
+ HKLM,%CurrentVersionNT%,"CurrentMinorVersionNumber",0x10003,0
+-HKLM,%CurrentVersionNT%,"CurrentBuild",2,"19045"
+-HKLM,%CurrentVersionNT%,"CurrentBuildNumber",2,"19045"
++HKLM,%CurrentVersionNT%,"CurrentBuild",2,"22000"
++HKLM,%CurrentVersionNT%,"CurrentBuildNumber",2,"22000"
+ HKLM,%CurrentVersionNT%,"UBR",0x10003,5796
+ HKLM,%CurrentVersionNT%,"CurrentType",2,"Multiprocessor Free"
+ HKLM,%CurrentVersionNT%,"DigitalProductId",1,00,00,00,00,00,00,00,00,00,00,00,\
+@@ -1124,8 +1124,8 @@ HKLM,%CurrentVersionNT%,"DigitalProductId",1,00,00,00,00,00,00,00,00,00,00,00,\
+ 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+ 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,\
+ 00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00,00
+ HKLM,%CurrentVersionNT%,"EditionId",2,"Professional"
+ HKLM,%CurrentVersionNT%,"InstallationType",2,"Client"
+-HKLM,%CurrentVersionNT%,"ProductName",2,"Windows 10 Pro"
++HKLM,%CurrentVersionNT%,"ProductName",2,"Windows 11 Pro"
+ HKLM,%Control%\ProductOptions,"ProductType",2,"WinNT"
+ HKLM,%Control%\Windows,"CSDVersion",0x10003,0
+ HKLM,%Control%\Session Manager\Environment,"OS",2,"Windows_NT"
+-- 
+2.47.0
+

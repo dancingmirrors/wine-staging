@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wine Staging <wine-staging@winehq.org>
+Date: Mon, 2 Dec 2024 00:00:00 +0000
+Subject: [PATCH] ntdll: Set default Windows version to Windows 11.
+
+---
+ dlls/ntdll/version.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/dlls/ntdll/version.c b/dlls/ntdll/version.c
+index 11111111111..22222222222 100644
+--- a/dlls/ntdll/version.c
++++ b/dlls/ntdll/version.c
+@@ -313,7 +313,7 @@ void version_init(void)
+ 
+     NtQuerySystemInformation( SystemWineVersionInformation, wine_version, sizeof(wine_version), NULL );
+ 
+-    current_version = &VersionData[WIN10];
++    current_version = &VersionData[WIN11];
+ 
+     RtlOpenCurrentUser( KEY_ALL_ACCESS, &root );
+     InitializeObjectAttributes( &attr, &nameW, OBJ_CASE_INSENSITIVE, root, NULL );
+-- 
+2.47.0
+

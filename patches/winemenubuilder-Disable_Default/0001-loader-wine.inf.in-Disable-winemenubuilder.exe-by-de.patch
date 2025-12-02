@@ -1,0 +1,25 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wine Staging <wine-staging@winehq.org>
+Date: Mon, 2 Dec 2024 00:00:00 +0000
+Subject: [PATCH] loader/wine.inf.in: Disable winemenubuilder.exe by default.
+
+Many users prefer to not have Wine integrate with their desktop
+environments by creating .desktop files and file associations.
+This change disables winemenubuilder.exe by default.
+---
+ loader/wine.inf.in | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/loader/wine.inf.in b/loader/wine.inf.in
+--- a/loader/wine.inf.in
++++ b/loader/wine.inf.in
+@@ -1348,7 +1348,6 @@ StartType=3
+ ErrorControl=1
+ 
+ [Services]
+-HKLM,%CurrentVersion%\RunServices,"winemenubuilder",2,"%11%\winemenubuilder.exe -a -r"
+ HKLM,"System\CurrentControlSet\Services\Dnscache\Parameters",,16
+ HKLM,"System\CurrentControlSet\Services\Eventlog\Application",,16
+ HKLM,"System\CurrentControlSet\Services\Eventlog\System","Sources",0x10000,""
+-- 
+2.47.0
