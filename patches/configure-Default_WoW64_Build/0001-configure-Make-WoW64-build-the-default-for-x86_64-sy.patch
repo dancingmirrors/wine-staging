@@ -1,0 +1,50 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Wine Staging <wine-staging@winehq.org>
+Date: Mon, 2 Dec 2024 00:00:00 +0000
+Subject: [PATCH] configure: Make WoW64 build the default for x86_64 systems.
+
+When --enable-archs is not explicitly specified, default to building
+both x86_64 and i386 architectures on x86_64 systems. This enables
+WoW64 support by default, allowing Wine to run both 32-bit and 64-bit
+Windows applications out of the box.
+
+This patch makes two changes:
+1. Skip the legacy 32-bit fallback build on x86_64 when mingw is available,
+   since we will be using WoW64 cross-compilation instead.
+2. Default to cross_archs="x86_64 i386" on x86_64 systems when --enable-archs
+   is not explicitly specified.
+
+---
+ configure.ac | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 11111111111..22222222222 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -120,7 +120,7 @@ esac
+ AC_SUBST(TARGETFLAGS)
+ case $host in
+   x86_64*|amd64*)
+-    if test "x$enable_win64" != "xyes" -a "$cross_compiling" != "yes" -a x"$enable_archs" = x
++    if test "x$enable_win64" != "xyes" -a "$cross_compiling" != "yes" -a x"$enable_archs" = x -a "x$with_mingw" = xno
+     then
+       CC="$CC -m32"
+       CXX="$CXX -m32"
+@@ -381,7 +381,12 @@ AS_VAR_SET_IF([enable_archs],
+          esac
+      done],
+     [if test "x$with_mingw" != xno
+      then
+-         test $HOST_ARCH = unknown || cross_archs=$HOST_ARCH
++         if test $HOST_ARCH = x86_64
++         then
++             cross_archs="x86_64 i386"
++         else
++             test $HOST_ARCH = unknown || cross_archs=$HOST_ARCH
++         fi
+      fi])
+ 
+ AS_VAR_IF([PE_ARCHS],[none],[cross_archs=])
+-- 
+2.47.0
