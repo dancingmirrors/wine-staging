@@ -1,7 +1,0 @@
-MODULE    = dxgmms1.sys
-IMPORTS   = ntoskrnl
-EXTRADLLFLAGS = -mno-cygwin -Wl,--subsystem,native
-
-SOURCES = \
-	dxgmms1.sys.spec \
-	main.c
