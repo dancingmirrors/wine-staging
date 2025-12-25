@@ -1,1 +1,0 @@
-Fixes: GetAsyncKeyState does not return the least significant bit for recently pressed keys (needed for Boris ENB keybindings)
